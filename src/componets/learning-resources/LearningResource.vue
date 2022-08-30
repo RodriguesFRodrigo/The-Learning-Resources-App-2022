@@ -19,14 +19,17 @@ export default {
         title: {
             type: String,
             required: true,
+            default: '',
         },
         description: {
             type: String,
             required: true,
+            default: '',
         },
         link: {
             type: String,
             required: true,
+            default: '',
         },
     },
 
