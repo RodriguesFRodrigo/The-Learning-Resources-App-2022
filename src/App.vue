@@ -1,32 +1,16 @@
 <template>
-    <stored-resource :resources="storedResources"></stored-resource>
+    <the-header title="RememberMe"></the-header>
+    <the-resources></the-resources>
 </template>
 
 <script>
-import StoredResource from './componets/learning-resources/StoredResource.vue';
+import TheHeader from './componets/layouts/TheHeader.vue';
+import TheResources from './componets/learning-resources/TheResources.vue';
 
 export default {
     components: {
-        StoredResource,
-    },
-
-    data() {
-        return {
-            storedResources: [
-                {
-                    id: 'sql',
-                    title: 'SQL Plus',
-                    description: 'Lean SQL Plus',
-                    link: 'https://www.oracle.com/br/database/technologies/sqlplus-cloud.html',
-                },
-                {
-                    id: 'joins',
-                    title: 'Joins',
-                    description: 'Lean Joins',
-                    link: 'https://www.devmedia.com.br/clausulas-inner-join-left-join-e-right-join-no-sql-server/18930',
-                }
-            ]
-        };
+        TheHeader,
+        TheResources,
     },
 }
 </script>
