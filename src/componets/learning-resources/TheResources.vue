@@ -67,7 +67,7 @@ export default {
                 id: new Date().toISOString(),
                 title,
                 description,
-                url,
+                link: url,
             };
             this.storedResources.unshift(newResource);
             this.selectedTab = 'stored-resource';
