@@ -53,6 +53,7 @@ export default {
         return {
             resources: this.storedResources,
             addNewResource: this.addNewResource,
+            removeResource: this.removeResource,
         };
     },
     
@@ -70,6 +71,15 @@ export default {
             };
             this.storedResources.unshift(newResource);
             this.selectedTab = 'stored-resource';
+        },
+
+        removeResource(id) {
+            // Do not work! cauz change the reference os the storedResources and not create reactivity
+            // in the components that use storedResources
+            // this.storedResources = this.storedResources.filter(resource => resource.id !== id);
+            // console.log(this.storedResources.length);
+            const idx = this.storedResources.findIndex(resource => resource.id === id);
+            this.storedResources.splice(idx, 1);
         },
     }
 }
