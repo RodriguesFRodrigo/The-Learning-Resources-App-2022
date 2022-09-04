@@ -1,4 +1,12 @@
 <template>
+    <base-dialog v-if="inputIsInvalid" title="Invalid Input!" @close="confirmError">
+        <template #default>
+            <p>Input can't be empty!</p>
+        </template>
+        <template #actions>
+            <base-button @click="confirmError">Okay</base-button>
+        </template>
+    </base-dialog>
     <base-card>
         <form @submit.prevent="submitData">
             <div class="form-control">
@@ -23,12 +31,29 @@
 <script>
 export default {
     inject: ['addNewResource'],
+    
+    data() {
+        return {
+            inputIsInvalid: false,
+        }
+    },
+    
     methods: {
         submitData() {
             const enteredTitle = this.$refs.titleInput.value;
             const enteredDescription = this.$refs.descInput.value;
             const enteredUrl = this.$refs.urlInput.value;
+
+            if(enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredUrl.trim() === ''){
+                this.inputIsInvalid = true;
+                return;
+            }
+
             this.addNewResource(enteredTitle, enteredDescription, enteredUrl);
+        },
+
+        confirmError() {
+            this.inputIsInvalid = false;
         }
     }
 }
